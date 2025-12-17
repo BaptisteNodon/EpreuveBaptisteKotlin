@@ -34,8 +34,10 @@ class MoviesViewModel(
         when (intent) {
             is MoviesIntent.LoadMovies -> loadMovies()
             is MoviesIntent.OnMovieClicked -> {
-                // action Hardware : Jouer le son
+                // action Hardware : jouer le son
                 soundManager.playClickSound()
+                // action Hardware : vibrer le téléphone
+                soundManager.triggerVibration()
             }
         }
     }
