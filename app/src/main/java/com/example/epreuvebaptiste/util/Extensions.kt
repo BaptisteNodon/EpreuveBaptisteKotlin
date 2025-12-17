@@ -4,8 +4,7 @@ import android.content.Context
 import android.widget.Toast
 
 // valide le point : "Extension liée à une composante Android"
-// je ne l'utilise pas
-
+// genre de petite pop up
 fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
