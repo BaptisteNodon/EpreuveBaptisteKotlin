@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.epreuvebaptiste.ui.movies.MoviesScreen
+import com.example.epreuvebaptiste.ui.navigation.MoviesNavigation
 import com.example.epreuvebaptiste.ui.theme.EpreuveBaptisteTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,8 +30,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // affiche l'écran
-                    MoviesScreen()
+                    // appelle la Navigation, qui appellera l'écran.
+                    MoviesNavigation()
                 }
             }
         }
