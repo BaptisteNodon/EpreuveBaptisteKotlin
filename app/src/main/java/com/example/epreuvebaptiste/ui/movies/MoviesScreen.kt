@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.epreuvebaptiste.domain.models.Movie
 import org.koin.androidx.compose.koinViewModel
+import androidx.compose.ui.res.stringResource
 
 /**
  * L'écran principal affichant la liste des films.
@@ -55,12 +56,14 @@ fun MoviesScreen(
                 // Cas 1 : chargement
                 state.isLoading -> {
                     CircularProgressIndicator()
+                    Text(stringResource(com.example.epreuvebaptiste.R.string.loading))
+
                 }
 
                 // Cas 2 : erreur
                 state.error != null -> {
                     Text(
-                        text = state.error ?: "Erreur inconnue",
+                        text = stringResource(com.example.epreuvebaptiste.R.string.error_prefix) + state.error,
                         color = Color.Red,
                         modifier = Modifier.padding(16.dp)
                     )
@@ -68,7 +71,7 @@ fun MoviesScreen(
 
                 // Cas 3 : liste vide
                 state.movies.isEmpty() -> {
-                    Text("Aucun film trouvé.")
+                    Text(stringResource(com.example.epreuvebaptiste.R.string.no_movies))
                 }
 
                 // Cas 4 : affichage de la liste
