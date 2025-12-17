@@ -1,5 +1,6 @@
 # Ciné Baptiste 🎬
 
+
 Application Android native développée en Kotlin, démontrant une architecture moderne et modulaire pour consulter les films populaires.
 
 ## 🏗 Architecture
