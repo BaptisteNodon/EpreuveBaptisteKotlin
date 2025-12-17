@@ -15,6 +15,7 @@ import org.koin.dsl.module
 
 import io.ktor.client.plugins.HttpTimeout
 import com.example.epreuvebaptiste.data.remote.ApiConfig
+import com.example.epreuvebaptiste.domain.usecase.GetPopularMoviesUseCase
 
 
 /**
@@ -51,6 +52,8 @@ val appModule = module {
         MovieRepositoryImpl(client = get())
     }
 
+    single { GetPopularMoviesUseCase(repository = get()) }
+
     // 3. Manager
     single {
         SoundManager(androidContext())
@@ -60,7 +63,7 @@ val appModule = module {
     // faut passer le 'repository' ET le 'soundManager' pour que ca marche d'ou le 'get()'
     viewModel {
         MoviesViewModel(
-            repository = get(),
+            getPopularMoviesUseCase = get(),
             soundManager = get()
         )
     }
