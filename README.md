@@ -18,28 +18,32 @@ Le projet suit rigoureusement les principes de la **Clean Architecture** (Onion 
 
 ```text
 com.example.epreuvebaptiste
-├── data                # 🧱 COUCHE DATA (Infrastructure)
-│   ├── remote          # Communication avec l'API TMDB (Ktor)
-│   ├── dto             # Data Transfer Objects & Mappers
-│   └── repository      # Implémentation du contrat d'accès aux données
+├── data                # [COUCHE DATA] : Infrastructure
+│   ├── remote          # API Config & DTOs
+│   └── repository      # Implémentation du repository
 │
-├── domain              # 🧠 COUCHE DOMAIN (Règles Métier - Framework Agnostic)
-│   ├── models          # Objets métier purs (ex: Movie)
+├── di                  # [DEPENDENCY INJECTION]
+│   └── KoinModule.kt   # Modules Koin (AppModule)
+│
+├── domain              # [COUCHE DOMAIN] : Cœur métier
+│   ├── models          # Objets métier (movie.kt)
 │   ├── repository      # Interfaces (Contrats)
-│   └── usecase         # Cas d'utilisation (ex: GetPopularMoviesUseCase)
+│   └── usecase         # Logique métier (GetPopularMoviesUseCase)
 │
-├── ui                  # 🎨 COUCHE PRESENTATION (Interface)
-│   ├── movies          # Feature principale
-│   │   ├── MoviesScreen.kt    # Vue déclarative (Compose)
-│   │   ├── MoviesViewModel.kt # State Holder
-│   │   └── MoviesContract.kt  # Définition du pattern MVI
-│   ├── navigation      # Gestionnaire de navigation (NavHost)
-│   └── components      # Design System (Composants réutilisables)
+├── manager             # [HARDWARE ABSTRACTION]
+│   └── SoundManager.kt # Gestion Audio & Vibration
 │
-├── manager             # ⚙️ GESTIONNAIRES SYSTÈME
-│   └── SoundManager.kt # Abstraction des capacités natives (Son/Vibration)
+├── ui                  # [COUCHE PRESENTATION]
+│   ├── components      # Design System (MovieCard.kt)
+│   ├── movies          # Feature principale (Screen, VM, Contract)
+│   ├── navigation      # Gestion de la navigation (NavHost)
+│   └── theme           # Thème de l'application
 │
-└── di                  # 💉 INJECTION DE DÉPENDANCES (Koin)
+├── util                # [UTILITAIRES]
+│   └── Extensions.kt   # Extensions Kotlin (Context.showToast)
+│
+├── MainActivity.kt     # Point d'entrée (Single Activity)
+└── MoviesApp.kt        # Classe Application (Init Koin)
 ```
 
 ### 🔄 Pattern UI : MVI (Model-View-Intent)
