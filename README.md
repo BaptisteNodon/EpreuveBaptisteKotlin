@@ -94,7 +94,7 @@ Utilisation d'un `Manager` dédié pour interagir avec le matériel via le `Cont
 1.  **Pré-requis** : Android Studio Koala (ou plus récent), JDK 17+.
 2.  **Cloner le dépôt** :
     ```bash
-    git clone https://github.com/votre-username/cine-baptiste.git
+    git clone https://github.com/BaptisteNodon/EpreuveBaptisteKotlin.git
     ```
 3.  **Configuration API** :
     *   Une clé API TMDB de test est déjà incluse dans `data/remote/ApiConfig.kt` pour faciliter l'évaluation.
